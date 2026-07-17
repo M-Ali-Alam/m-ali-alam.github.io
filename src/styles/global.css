@@ -1,0 +1,211 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-primary: #032121;
+  --color-primary-container: #1a3636;
+  --color-secondary: #456277;
+  --color-secondary-container: #c5e4fd;
+  --color-background: #f8f9fa;
+  --color-surface: #f8f9fa;
+  --color-paper-white: #ffffff;
+  --color-ink-black: #0F172A;
+  --color-slate-gray: #64748B;
+  --color-border-subtle: #E2E8F0;
+  
+  --color-error-container: #ffdad6;
+  --color-surface-dim: #d9dadb;
+  --color-on-surface-variant: #414848;
+  --color-outline-variant: #c1c8c7;
+  --color-on-error-container: #93000a;
+  --color-surface-tint: #476363;
+  --color-on-primary: #ffffff;
+  --color-on-secondary: #ffffff;
+  --color-on-tertiary: #ffffff;
+  --color-on-error: #ffffff;
+  --color-on-primary-container: #829f9f;
+  --color-on-surface: #191c1d;
+  --color-primary-fixed: #cae8e8;
+  --color-inverse-surface: #2e3132;
+  --color-surface-bright: #f8f9fa;
+  --color-surface-container-low: #f3f4f5;
+  --color-surface-container: #edeeef;
+  --color-surface-container-high: #e7e8e9;
+  --color-surface-container-highest: #e1e3e4;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-variant: #e1e3e4;
+
+  /* Font Families */
+  --font-headline: "Playfair Display", serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "Courier Prime", monospace;
+
+  /* Spacing */
+  --spacing-section-gap: 8rem;
+  --spacing-container-max: 1140px;
+  --spacing-gutter: 2rem;
+  --spacing-content-gap: 4rem;
+  --spacing-margin-mobile: 1.25rem;
+
+  /* Border Radius */
+  --radius-default: 0.125rem;
+  --radius-lg: 0.25rem;
+  --radius-xl: 0.5rem;
+  --radius-full: 9999px;
+}
+
+/* Custom Utilities or Base Styles */
+@layer base {
+  body {
+    background-color: #f8f9fa; /* using paper-white/background */
+    color: #191c1d;
+    font-family: "Inter", sans-serif;
+  }
+}
+
+/* Custom Typography Utilities corresponding to design system */
+.font-display-lg {
+  font-family: "Playfair Display", serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.font-display-lg-mobile {
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.font-headline-md {
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.font-headline-sm {
+  font-family: "Playfair Display", serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.font-body-lg {
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.font-body-md {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.font-label-caps {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.font-mono-code {
+  font-family: "Courier Prime", monospace;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* Prose styling for MD/MDX rendering */
+.prose h2 {
+  font-family: "Playfair Display", serif;
+  color: #032121; /* primary */
+  font-size: 1.5rem; /* 24px */
+  font-weight: 600;
+  line-height: 1.35;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #E2E8F0; /* border-subtle */
+  padding-bottom: 0.5rem;
+}
+
+.prose h3 {
+  font-family: "Playfair Display", serif;
+  color: #032121; /* primary */
+  font-size: 1.25rem; /* 20px */
+  font-weight: 600;
+  line-height: 1.4;
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose h4 {
+  font-family: "Inter", sans-serif;
+  color: #191c1d;
+  font-size: 0.875rem; /* 14px */
+  font-weight: 600;
+  line-height: 1.4;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.prose p {
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+}
+
+.prose ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.prose ul li {
+  margin-bottom: 0.375rem;
+}
+
+.prose a {
+  color: #032121; /* primary */
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.prose a:hover {
+  color: #456277; /* secondary */
+}
+
+.prose hr {
+  border: 0;
+  border-top: 1px solid #E2E8F0;
+  margin: 2rem 0;
+}
+
+.prose pre {
+  background-color: #f3f4f5; /* surface-container-low */
+  padding: 1rem;
+  border-radius: 0.25rem;
+  border: 1px solid #E2E8F0;
+  overflow-x: auto;
+  margin-bottom: 1.25rem;
+  font-family: "Courier Prime", monospace;
+  font-size: 0.875rem;
+}
+
+.prose code {
+  font-family: "Courier Prime", monospace;
+  background-color: #f3f4f5;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.125rem;
+  font-size: 0.875rem;
+}
