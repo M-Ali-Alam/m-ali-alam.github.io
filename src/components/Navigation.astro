@@ -1,31 +1,33 @@
 ---
 ---
-<nav class="bg-paper-white dark:bg-inverse-surface border-b border-border-subtle dark:border-outline-variant w-full max-w-[1140px] mx-auto px-margin-mobile md:px-gutter flex justify-between items-center h-16 transition-all duration-200 ease-in-out sticky top-0 z-50">
-  <a class="font-headline-sm text-headline-sm text-primary dark:text-primary-fixed tracking-tight hover:opacity-80 transition-opacity" href="/">M. Ali Alam</a>
-  
-  <div class="hidden md:flex gap-8 items-center font-body-md text-body-md">
-    <a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary dark:border-primary-fixed pb-1" href="/">Home</a>
-    <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors hover:bg-surface-container-low dark:hover:bg-primary-container px-3 py-1 rounded" href="/#about">About</a>
-    <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors hover:bg-surface-container-low dark:hover:bg-primary-container px-3 py-1 rounded" href="/#research">Research</a>
-    <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors hover:bg-surface-container-low dark:hover:bg-primary-container px-3 py-1 rounded" href="/#experience">Experience</a>
-    <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors hover:bg-surface-container-low dark:hover:bg-primary-container px-3 py-1 rounded" href="/#cv">CV & Contact</a>
-  </div>
-  
-  <div class="flex gap-4 items-center">
-    <button id="menu-btn" aria-label="Menu" class="md:hidden text-primary p-2 flex items-center justify-center">
-      <span class="material-symbols-outlined">menu</span>
-    </button>
-  </div>
-</nav>
+<header class="w-full bg-paper-white dark:bg-inverse-surface border-b border-border-subtle dark:border-outline-variant sticky top-0 z-50">
+  <nav class="w-full max-w-[1140px] mx-auto px-margin-mobile md:px-gutter flex justify-between items-center h-16 transition-all duration-200 ease-in-out">
+    <a class="font-headline-sm text-headline-sm text-primary dark:text-primary-fixed tracking-tight hover:opacity-80 transition-opacity" href="/">M. Ali Alam</a>
+    
+    <div class="hidden md:flex gap-8 items-center font-body-md text-body-md">
+      <a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary dark:border-primary-fixed pb-1" href="/">Home</a>
+      <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors hover:bg-surface-container-low dark:hover:bg-primary-container px-3 py-1 rounded" href="/#about">About</a>
+      <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors hover:bg-surface-container-low dark:hover:bg-primary-container px-3 py-1 rounded" href="/#research">Research</a>
+      <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors hover:bg-surface-container-low dark:hover:bg-primary-container px-3 py-1 rounded" href="/#experience">Experience</a>
+      <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors hover:bg-surface-container-low dark:hover:bg-primary-container px-3 py-1 rounded" href="/#cv">CV & Contact</a>
+    </div>
+    
+    <div class="flex gap-4 items-center">
+      <button id="menu-btn" aria-label="Menu" class="md:hidden text-primary p-2 flex items-center justify-center">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </nav>
 
-<!-- Mobile Menu Dropdown -->
-<div id="mobile-menu" class="hidden md:hidden bg-paper-white border-b border-border-subtle w-full px-margin-mobile py-4 flex flex-col gap-4 sticky top-16 z-40 transition-all duration-200">
-  <a class="text-primary font-bold py-2" href="/">Home</a>
-  <a class="text-on-surface-variant hover:text-primary py-2" href="/#about">About</a>
-  <a class="text-on-surface-variant hover:text-primary py-2" href="/#research">Research</a>
-  <a class="text-on-surface-variant hover:text-primary py-2" href="/#experience">Experience</a>
-  <a class="text-on-surface-variant hover:text-primary py-2" href="/#cv">CV & Contact</a>
-</div>
+  <!-- Mobile Menu Dropdown -->
+  <div id="mobile-menu" class="hidden md:hidden bg-paper-white border-t border-border-subtle w-full px-margin-mobile py-4 flex flex-col gap-4 transition-all duration-200">
+    <a class="text-primary font-bold py-2" href="/">Home</a>
+    <a class="text-on-surface-variant hover:text-primary py-2" href="/#about">About</a>
+    <a class="text-on-surface-variant hover:text-primary py-2" href="/#research">Research</a>
+    <a class="text-on-surface-variant hover:text-primary py-2" href="/#experience">Experience</a>
+    <a class="text-on-surface-variant hover:text-primary py-2" href="/#cv">CV & Contact</a>
+  </div>
+</header>
 
 <script>
   const menuBtn = document.getElementById('menu-btn');

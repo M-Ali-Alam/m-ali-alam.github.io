@@ -193,6 +193,7 @@
 
 .prose pre {
   background-color: #f3f4f5; /* surface-container-low */
+  color: #0f172a; /* ink-black */
   padding: 1rem;
   border-radius: 0.25rem;
   border: 1px solid #E2E8F0;
@@ -204,6 +205,7 @@
 
 .prose code {
   font-family: "Courier Prime", monospace;
+  color: #032121; /* primary */
   background-color: #f3f4f5;
   padding: 0.125rem 0.25rem;
   border-radius: 0.125rem;
