@@ -1,0 +1,110 @@
+---
+const pathname = Astro.url.pathname;
+const isHomeActive = pathname === '/';
+const isResearchActive = pathname.startsWith('/research');
+---
+<header class="w-full bg-paper-white dark:bg-inverse-surface border-b border-border-subtle dark:border-outline-variant sticky top-0 z-50">
+  <nav class="w-full max-w-[1140px] mx-auto px-margin-mobile md:px-gutter flex justify-between items-center h-16 transition-all duration-200 ease-in-out">
+    <a class="font-headline-sm text-headline-sm text-primary dark:text-primary-fixed tracking-tight hover:opacity-80 transition-opacity" href="/">M. Ali Alam</a>
+    
+    <div class="hidden md:flex gap-8 items-center font-body-md text-body-md">
+      <a class={isHomeActive ? "text-primary dark:text-primary-fixed font-bold border-b-2 border-primary dark:border-primary-fixed pb-1" : "text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors hover:bg-surface-container-low dark:hover:bg-primary-container px-3 py-1 rounded"} href="/">Home</a>
+      <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors hover:bg-surface-container-low dark:hover:bg-primary-container px-3 py-1 rounded" href="/#about">About</a>
+      <a class={isResearchActive ? "text-primary dark:text-primary-fixed font-bold border-b-2 border-primary dark:border-primary-fixed pb-1" : "text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors hover:bg-surface-container-low dark:hover:bg-primary-container px-3 py-1 rounded"} href="/#research">Research</a>
+      <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors hover:bg-surface-container-low dark:hover:bg-primary-container px-3 py-1 rounded" href="/#experience">Experience</a>
+      <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors hover:bg-surface-container-low dark:hover:bg-primary-container px-3 py-1 rounded" href="/#cv">CV & Contact</a>
+    </div>
+    
+    <div class="flex gap-4 items-center">
+      <button id="menu-btn" aria-label="Menu" class="md:hidden text-primary p-2 flex items-center justify-center">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Dropdown -->
+  <div id="mobile-menu" class="hidden md:hidden bg-paper-white border-t border-border-subtle w-full px-margin-mobile py-4 flex flex-col gap-4 transition-all duration-200">
+    <a class={isHomeActive ? "text-primary font-bold py-2" : "text-on-surface-variant hover:text-primary py-2"} href="/">Home</a>
+    <a class="text-on-surface-variant hover:text-primary py-2" href="/#about">About</a>
+    <a class={isResearchActive ? "text-primary font-bold py-2" : "text-on-surface-variant hover:text-primary py-2"} href="/#research">Research</a>
+    <a class="text-on-surface-variant hover:text-primary py-2" href="/#experience">Experience</a>
+    <a class="text-on-surface-variant hover:text-primary py-2" href="/#cv">CV & Contact</a>
+  </div>
+</header>
+
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close menu when clicking links
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  }
+
+  // Client-side scroll spy & hash highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('header nav div a');
+  const mobileLinksList = document.querySelectorAll('#mobile-menu a');
+
+  function clearActive() {
+    navLinks.forEach(link => {
+      link.className = "text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors hover:bg-surface-container-low dark:hover:bg-primary-container px-3 py-1 rounded";
+    });
+    mobileLinksList.forEach(link => {
+      link.className = "text-on-surface-variant hover:text-primary py-2";
+    });
+  }
+
+  function setActive(href) {
+    clearActive();
+    
+    const targets = document.querySelectorAll(`header nav div a[href="${href}"], #mobile-menu a[href="${href}"]`);
+    targets.forEach(target => {
+      if (target.closest('nav')) {
+        target.className = "text-primary dark:text-primary-fixed font-bold border-b-2 border-primary dark:border-primary-fixed pb-1";
+      } else {
+        target.className = "text-primary font-bold py-2";
+      }
+    });
+  }
+
+  if (window.location.pathname.startsWith('/research')) {
+    setActive('/#research');
+  } else {
+    // Scrollspy with IntersectionObserver
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -60% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          if (id) {
+            setActive(`/#${id}`);
+          }
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
+
+    // Handle scroll to top (Home)
+    window.addEventListener('scroll', () => {
+      if (window.scrollY < 100) {
+        setActive('/');
+      }
+    });
+  }
+</script>

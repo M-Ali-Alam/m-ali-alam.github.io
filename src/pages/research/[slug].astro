@@ -1,0 +1,43 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const researchEntries = await getCollection('research');
+  return researchEntries.map(entry => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Layout title={`${entry.data.title} | Muhammad Ali Alam`}>
+  <article class="py-section-gap max-w-3xl mx-auto">
+    <!-- Back Navigation -->
+    <a href="/#research" class="inline-flex items-center text-slate-gray hover:text-primary transition-colors font-body-md mb-8">
+      <span class="material-symbols-outlined mr-1 text-sm">arrow_back</span> Back to Research
+    </a>
+
+    <!-- Header -->
+    <header class="mb-10">
+      <p class="font-label-caps text-label-caps text-secondary mb-3">{entry.data.category}</p>
+      <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-4">
+        {entry.data.title}
+      </h1>
+      <div class="flex flex-wrap gap-2 items-center text-sm font-mono-code text-slate-gray">
+        <span class="bg-surface-container-high text-primary px-3 py-1 rounded">{entry.data.status}</span>
+        {entry.data.tags?.map(tag => (
+          <span class="bg-surface-container-low px-2 py-1 rounded">{tag}</span>
+        ))}
+      </div>
+    </header>
+
+    <!-- Main Content rendered via MDX -->
+    <div class="prose max-w-none font-body-md text-body-md text-on-surface-variant">
+      <Content />
+    </div>
+  </article>
+</Layout>
