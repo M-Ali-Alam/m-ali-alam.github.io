@@ -270,15 +270,40 @@ const sortedProjects = projects.sort((a, b) => {
         <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
           Currently exploring PhD positions in computational biology — if that overlaps with your work, I'd like to hear from you.
         </p>
-        <div class="flex flex-wrap gap-4">
+        <div class="flex flex-wrap gap-4 items-center">
           <a class="bg-primary text-on-primary px-6 py-3 rounded hover:bg-ink-black transition-colors font-body-md text-body-md font-medium inline-flex items-center" href="/Muhammad_Ali_Alam_CV.pdf" download>
             <span class="material-symbols-outlined mr-2">download</span> Download CV (PDF)
           </a>
-          <a class="border border-outline text-primary px-6 py-3 rounded hover:bg-surface-container-low transition-colors font-body-md text-body-md font-medium inline-flex items-center" href="mailto:m.ali.alam.dev@gmail.com">
+          <a id="email-btn" class="border border-outline text-primary px-6 py-3 rounded hover:bg-surface-container-low transition-colors font-body-md text-body-md font-medium inline-flex items-center cursor-pointer" href="mailto:m.ali.alam.dev@gmail.com">
             <span class="material-symbols-outlined mr-2">mail</span> Send Email
           </a>
+        </div>
+        <div class="flex items-center gap-3 text-sm text-slate-gray pt-1">
+          <span>Direct email: <a href="mailto:m.ali.alam.dev@gmail.com" class="text-primary font-mono-code hover:underline">m.ali.alam.dev@gmail.com</a></span>
+          <span id="email-toast" class="hidden text-xs text-secondary font-mono-code bg-surface-container-low px-2 py-0.5 rounded border border-border-subtle transition-all">
+            ✓ Copied to clipboard!
+          </span>
         </div>
       </div>
     </div>
   </section>
 </Layout>
+
+<script>
+  const emailBtn = document.getElementById('email-btn');
+  const emailToast = document.getElementById('email-toast');
+
+  if (emailBtn) {
+    emailBtn.addEventListener('click', () => {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText('m.ali.alam.dev@gmail.com');
+        if (emailToast) {
+          emailToast.classList.remove('hidden');
+          setTimeout(() => {
+            emailToast.classList.add('hidden');
+          }, 3500);
+        }
+      }
+    });
+  }
+</script>
